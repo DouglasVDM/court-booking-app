@@ -9,7 +9,7 @@ const useCourts = (apiEndpointPrefix) => {
       try {
         const courtsResponse = await axios.get(`${apiEndpointPrefix}/courts`);
         setCourts(courtsResponse.data);
-        console.log("courtsResponse", courtsResponse.data);
+        ("courtsResponse", courtsResponse.data);
       } catch (err) {
         console.error("Error fetching courts:", err.message);
       }
@@ -18,7 +18,7 @@ const useCourts = (apiEndpointPrefix) => {
     fetchCourts();
   }, [apiEndpointPrefix]);
 
-  return { courts };
+  return { courts, setCourts };
 };
 
 export default useCourts;
