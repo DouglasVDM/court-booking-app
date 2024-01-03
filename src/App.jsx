@@ -15,7 +15,7 @@ import useDurations from "./customHooks/useDurations";
 import useStartTimes from "./customHooks/useStartTimes";
 import useDaysOfWeek from "./customHooks/useDaysOfWeek";
 import useBookings from "./customHooks/useBookings";
-import useCourts from "./customHooks/userCourts";
+import useCourts from "./customHooks/useCourts";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -23,12 +23,12 @@ const App = () => {
 
   const apiEndpointPrefix = import.meta.env.VITE_API_ENDPOINT;
 
-  const { bookingTypes } = useBookingTypes(apiEndpointPrefix);
-  const { durations } = useDurations(apiEndpointPrefix);
-  const { startTimes } = useStartTimes(apiEndpointPrefix);
-  const { daysOfWeek } = useDaysOfWeek(apiEndpointPrefix);
-  const { bookings } = useBookings(apiEndpointPrefix);
-  const { courts } = useCourts(apiEndpointPrefix);
+  const { bookingTypes, setBookingTypes } = useBookingTypes(apiEndpointPrefix);
+  const { durations, setDurations } = useDurations(apiEndpointPrefix);
+  const { startTimes, setStartTimes } = useStartTimes(apiEndpointPrefix);
+  const { daysOfWeek, setDaysOfWeek } = useDaysOfWeek(apiEndpointPrefix);
+  const { bookings, setBookings } = useBookings(apiEndpointPrefix);
+  const { courts, setCourts } = useCourts(apiEndpointPrefix);
 
   const handleClick = () => {
     setShow(!show);
@@ -43,20 +43,31 @@ const App = () => {
       </Button>
       <br />
       <br />
-      {show ? "" : <BookingForm courts={courts} bookings={bookings} />}
-      <Courts courts={courts} />
+      {show ? (
+        ""
+      ) : (
+        <BookingForm
+          courts={courts}
+          bookings={bookings}
+          setBookings={setBookings}
+        />
+      )}
+      <Courts courts={courts} setCourts={setCourts} />
       <br />
       <br />
-      <DaysOfWeek daysOfWeek={daysOfWeek} />
+      <DaysOfWeek daysOfWeek={daysOfWeek} setDaysOfWeek={setDaysOfWeek} />
       <br />
       <br />
-      <StartTimes startTimes={startTimes} />
+      <StartTimes startTimes={startTimes} setStartTimes={setStartTimes} />
       <br />
       <br />
-      <Durations durations={durations} />
+      <Durations durations={durations} setDurations={setDurations} />
       <br />
       <br />
-      <BookingType bookingTypes={bookingTypes} />
+      <BookingType
+        bookingTypes={bookingTypes}
+        setBookingTypes={setBookingTypes}
+      />
     </>
   );
 };
