@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const useBookingTypes = (apiEndpointPrefix) => {
   const [bookingTypes, setBookingTypes] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchBookingTypes = async () => {
       try {
-        const response = await axios.get(`${apiEndpointPrefix}/booking-types`);
-        setBookingTypes(response.data);
-        setLoading(false);
-        console.log("response", response.data);
+        const bookingTypesResponse = await axios.get(
+          `${apiEndpointPrefix}/booking-types`
+        );
+        setBookingTypes(bookingTypesResponse.data);
+        console.log("bookingTypesResponse", bookingTypesResponse.data);
       } catch (err) {
         console.error("Error fetching booking types:", err.message);
       }
@@ -20,7 +20,7 @@ const useBookingTypes = (apiEndpointPrefix) => {
     fetchBookingTypes();
   }, [apiEndpointPrefix]);
 
-  return { bookingTypes, loading };
+  return { bookingTypes };
 };
 
 export default useBookingTypes;
