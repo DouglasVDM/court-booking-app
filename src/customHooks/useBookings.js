@@ -9,7 +9,7 @@ const useBookings = (apiEndpointPrefix) => {
       try {
         const bookingsResponse = await axios.get(`${apiEndpointPrefix}/bookings`);
         setBookings(bookingsResponse.data);
-        console.log("bookingsResponse", bookingsResponse.data);
+        ("bookingsResponse", bookingsResponse.data);
       } catch (err) {
         console.error("Error fetching bookings:", err.message);
       }
@@ -18,7 +18,7 @@ const useBookings = (apiEndpointPrefix) => {
     fetchBookings();
   }, [apiEndpointPrefix]);
 
-  return { bookings };
+  return { bookings, setBookings };
 };
 
 export default useBookings;

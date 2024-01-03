@@ -9,7 +9,6 @@ const useStartTimes = (apiEndpointPrefix) => {
       try {
         const startTimesResponse = await axios.get(`${apiEndpointPrefix}/start-times`);
         setStartTimes(startTimesResponse.data);
-        console.log("startTimesResponse", startTimesResponse.data);
       } catch (err) {
         console.error("Error fetching start times:", err.message);
       }
@@ -18,7 +17,7 @@ const useStartTimes = (apiEndpointPrefix) => {
     fetchStartTimes();
   }, [apiEndpointPrefix]);
 
-  return { startTimes };
+  return { startTimes, setStartTimes };
 };
 
 export default useStartTimes;

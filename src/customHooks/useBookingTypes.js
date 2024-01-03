@@ -11,7 +11,7 @@ const useBookingTypes = (apiEndpointPrefix) => {
           `${apiEndpointPrefix}/booking-types`
         );
         setBookingTypes(bookingTypesResponse.data);
-        console.log("bookingTypesResponse", bookingTypesResponse.data);
+        ("bookingTypesResponse", bookingTypesResponse.data);
       } catch (err) {
         console.error("Error fetching booking types:", err.message);
       }
@@ -20,7 +20,7 @@ const useBookingTypes = (apiEndpointPrefix) => {
     fetchBookingTypes();
   }, [apiEndpointPrefix]);
 
-  return { bookingTypes };
+  return { bookingTypes, setBookingTypes };
 };
 
 export default useBookingTypes;
