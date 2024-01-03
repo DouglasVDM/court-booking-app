@@ -1,9 +1,12 @@
 import Button from "react-bootstrap/Button";
 
-const Courts = ({ courts }) => {
+const Courts = ({ courts, setCourts }) => {
   const handleClick = (event) => {
-    console.log(`Clicked ${event.target.value}`);
-  };
+    const selectedCourt = courts.filter((court)=> court.court_name===event.target.value);
+    (selectedCourt);
+    setCourts(selectedCourt);
+    };
+  
 
   return (
     <>

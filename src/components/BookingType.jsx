@@ -1,8 +1,12 @@
 import Button from "react-bootstrap/Button";
 
-const BookingType = ({ bookingTypes }) => {
+const BookingType = ({ bookingTypes, setBookingTypes }) => {
   const handleClick = (event) => {
-    console.log(`Clicked ${event.target.value}`);
+    (`Clicked ${event.target.value}`);
+    const selectedBookingType = bookingTypes.filter(
+      (type) => type.booking_type_name === event.target.value
+    );
+    setBookingTypes(selectedBookingType);
   };
 
   return (

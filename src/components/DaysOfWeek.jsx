@@ -1,9 +1,10 @@
 import Button from "react-bootstrap/Button";
 
-const DaysOfWeek = ({ daysOfWeek }) => {
+const DaysOfWeek = ({ daysOfWeek, setDaysOfWeek }) => {
 
   const handleClick = (event) => {
-    console.log(`Clicked ${event.target.value}`);
+    const selectedDayOfWeek = daysOfWeek.filter((day)=> day.day_name===event.target.value);
+    setDaysOfWeek(selectedDayOfWeek);
   };
 
   return (
