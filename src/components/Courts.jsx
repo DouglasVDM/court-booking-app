@@ -1,11 +1,13 @@
 import Button from "react-bootstrap/Button";
 
-const Courts = ({ courts, setCourts }) => {
+const Courts = ({ courts, onCourtSelected }) => {
   const handleClick = (event) => {
-    const selectedCourt = courts.filter((court)=> court.court_name===event.target.value);
+    const selectedCourt = courts.find((court)=> court.court_name===event.target.value);
     (selectedCourt);
-    setCourts(selectedCourt);
-    };
+
+    console.log("selectedCourt",selectedCourt);
+    onCourtSelected(selectedCourt);
+  };
   
 
   return (

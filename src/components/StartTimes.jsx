@@ -1,12 +1,13 @@
 import Button from "react-bootstrap/Button";
 
-const StartTimes = ({ startTimes, setStartTimes }) => {
+const StartTimes = ({ startTimes, onStartTimeSelected }) => {
   const handleClick = (event) => {
-    const selectedStartTime = startTimes.filter(
+    const selectedStartTime = startTimes.find(
       (time) => time.start_time === event.target.value
     );
-    setStartTimes(selectedStartTime);
-    selectedStartTime;
+
+    console.log("selectedStartTime", selectedStartTime);
+    onStartTimeSelected(selectedStartTime);
   };
 
   return (
