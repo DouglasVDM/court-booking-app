@@ -1,11 +1,13 @@
 import Button from "react-bootstrap/Button";
 
-const Durations = ({ durations, setDurations }) => {
+const Durations = ({ durations, onDurationSelected }) => {
   const handleClick = (event) => {
-    const selectedDuration = durations.filter(
+    const selectedDuration = durations.find(
       (duration) => duration.duration_hours === parseInt(event.target.value)
     );
-    setDurations(selectedDuration);
+
+    console.log("selectedDuration", selectedDuration);
+    onDurationSelected(selectedDuration);
   };
 
   return (
