@@ -1,12 +1,15 @@
 import Button from "react-bootstrap/Button";
 
-const BookingType = ({ bookingTypes, setBookingTypes }) => {
+const BookingType = ({ bookingTypes, onBookingTypeSelected }) => {
   const handleClick = (event) => {
-    (`Clicked ${event.target.value}`);
-    const selectedBookingType = bookingTypes.filter(
+    `Clicked ${event.target.value}`;
+    const selectedBookingType = bookingTypes.find(
       (type) => type.booking_type_name === event.target.value
     );
-    setBookingTypes(selectedBookingType);
+    console.log("selectedBookingType", selectedBookingType);
+
+    // Call the callback function to pass the selected booking type
+    onBookingTypeSelected(selectedBookingType);
   };
 
   return (

@@ -16,6 +16,7 @@ import useStartTimes from "./customHooks/useStartTimes";
 import useDaysOfWeek from "./customHooks/useDaysOfWeek";
 import useBookings from "./customHooks/useBookings";
 import useCourts from "./customHooks/useCourts";
+import useMembers from "./customHooks/useMembers";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -29,6 +30,7 @@ const App = () => {
   const { daysOfWeek, setDaysOfWeek } = useDaysOfWeek(apiEndpointPrefix);
   const { bookings, setBookings } = useBookings(apiEndpointPrefix);
   const { courts, setCourts } = useCourts(apiEndpointPrefix);
+  const { members, setMembers } = useMembers(apiEndpointPrefix);
 
   const handleClick = () => {
     setShow(!show);
@@ -48,11 +50,14 @@ const App = () => {
       ) : (
         <BookingForm
           courts={courts}
-          bookings={bookings}
-          setBookings={setBookings}
+          daysOfWeek={daysOfWeek}
+          startTimes={startTimes}
+          durations={durations}
+          bookingTypes={bookingTypes}
+          members={members}
         />
       )}
-      <Courts courts={courts} setCourts={setCourts} />
+      {/* <Courts courts={courts} setCourts={setCourts} />
       <br />
       <br />
       <DaysOfWeek daysOfWeek={daysOfWeek} setDaysOfWeek={setDaysOfWeek} />
@@ -64,10 +69,10 @@ const App = () => {
       <Durations durations={durations} setDurations={setDurations} />
       <br />
       <br />
-      <BookingType
-        bookingTypes={bookingTypes}
+      <BookingType */}
+      {/* bookingTypes={bookingTypes}
         setBookingTypes={setBookingTypes}
-      />
+      /> */}
     </>
   );
 };
