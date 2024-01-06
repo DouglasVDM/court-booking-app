@@ -37,16 +37,13 @@ const App = () => {
   };
 
   return (
-    <>
+    <div  className="m-4">
       <h1>Court Booking App</h1>
-      <br />
+      <hr />
+      {show ? (
       <Button onClick={handleClick} variant="primary" size="lg">
         Book a court
       </Button>
-      <br />
-      <br />
-      {show ? (
-        ""
       ) : (
         <BookingForm
           courts={courts}
@@ -55,25 +52,9 @@ const App = () => {
           durations={durations}
           bookingTypes={bookingTypes}
           members={members}
-        />
+        /> 
       )}
-      {/* <Courts courts={courts} setCourts={setCourts} />
-      <br />
-      <br />
-      <DaysOfWeek daysOfWeek={daysOfWeek} setDaysOfWeek={setDaysOfWeek} />
-      <br />
-      <br />
-      <StartTimes startTimes={startTimes} setStartTimes={setStartTimes} />
-      <br />
-      <br />
-      <Durations durations={durations} setDurations={setDurations} />
-      <br />
-      <br />
-      <BookingType */}
-      {/* bookingTypes={bookingTypes}
-        setBookingTypes={setBookingTypes}
-      /> */}
-    </>
+    </div>
   );
 };
 

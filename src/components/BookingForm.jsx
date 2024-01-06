@@ -1,5 +1,9 @@
 import { useState } from "react";
-import Form from "react-bootstrap/Form";
+import axios from "axios";
+import Button from "react-bootstrap/Button";
+
+const apiEndpointPrefix = import.meta.env.VITE_API_ENDPOINT;
+
 import BookingType from "./BookingType";
 import Courts from "./Courts";
 import DaysOfWeek from "./DaysOfWeek";
@@ -41,38 +45,64 @@ const BookingForm = ({
     setSelectedMember(member);
   };
 
+  const handleSubmit = async () => {
+    const bookingFormData = {
+      court_id: selectedCourt ? selectedCourt.court_id : null,
+      member_id: selectedMember ? selectedMember.member_id : null,
+      booked_at: new Date().toISOString(),
+      day_name: selectedDayOfWeek ? selectedDayOfWeek.day_name : null,
+      start_time: selectedStartTime ? selectedStartTime.start_time : null,
+      duration_hours: selectedDuration ? selectedDuration.duration_hours : null,
+      booking_type_name: selectedBookingType
+        ? selectedBookingType.booking_type_name
+        : null,
+    };
+
+    try {
+      const bookingResponse = await axios.post(
+        `${apiEndpointPrefix}/bookings`,
+        bookingFormData
+      );
+      console.log("Booking created:", bookingResponse.data);
+    } catch (err) {
+      console.error("Error creating booking", err.message);
+    }
+  };
+
   return (
     <>
       <Members members={members} onMemberSelected={handleMemberSelected} />
       <br />
-      <br />
       <Courts courts={courts} onCourtSelected={handleCourtSelected} />
-      <br />
       <br />
       <DaysOfWeek
         daysOfWeek={daysOfWeek}
+        selectedDayOfWeek={selectedDayOfWeek}
         onDayOfWeekSelected={handleDayOfWeekSelected}
       />
       <br />
-      <br />
       <StartTimes
         startTimes={startTimes}
+        selectedStartTime={selectedStartTime}
         onStartTimeSelected={handleStartTimeSelected}
       />
       <br />
-      <br />
       <Durations
         durations={durations}
+        selectedDuration={selectedDuration}
         onDurationSelected={handleDurationSelected}
       />
       <br />
-      <br />
       <BookingType
         bookingTypes={bookingTypes}
+        selectedBookingType={selectedBookingType}
+        setBookingType={setSelectedBookingType}
         onBookingTypeSelected={handleBookingTypeSelected}
       />
-
       <br />
+        <Button variant="primary" onClick={handleSubmit}>
+          Submit
+        </Button>
     </>
   );
 };
