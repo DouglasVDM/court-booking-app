@@ -1,4 +1,4 @@
-import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 const DaysOfWeek = ({ daysOfWeek, selectedDayOfWeek, onDayOfWeekSelected }) => {
   const handleClick = (event) => {
@@ -6,22 +6,21 @@ const DaysOfWeek = ({ daysOfWeek, selectedDayOfWeek, onDayOfWeekSelected }) => {
       (day) => day.day_name === event.target.value
     );
 
-    console.log("selectedDayOfWeek", selectedDayOfWeek);
+    console.log("selectedDayOfWeek", selectedDayOfWeek.day_name);
     onDayOfWeekSelected(selectedDayOfWeek);
   };
 
   return (
     <>
       <h1>Select day of the week</h1>
-      {!selectedDayOfWeek ? (
-        daysOfWeek.map(({ day_id, day_name }) => (
-          <Button onClick={handleClick} value={day_name} key={day_id}>
+      <Form.Select onClick={handleClick}>
+        <option>Click here to select</option>
+        {daysOfWeek.map(({ day_id, day_name }) => (
+          <option value={day_name} key={day_id}>
             {day_name}
-          </Button>
-        ))
-      ) : (
-        <p>Selected day of week: {selectedDayOfWeek.day_name}</p>
-      )}
+          </option>
+        ))}
+      </Form.Select>
     </>
   );
 };

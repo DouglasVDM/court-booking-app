@@ -1,22 +1,25 @@
-import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 const Members = ({ members, onMemberSelected }) => {
   const handleClick = (event) => {
-    const selectedMember = members.find((member)=> member.first_name===event.target.value);
-    (selectedMember);
+    const selectedMember = members.find(
+      (member) => member.member_id === parseInt(event.target.value));
 
-    console.log("selectedMember",selectedMember);
+    console.log("selectedMember", selectedMember.member_id);
     onMemberSelected(selectedMember);
   };
-  
+
   return (
     <>
-    <h1>Select Member</h1>
-      {members.map(({ member_id, first_name }) => (
-        <Button onClick={handleClick} value={first_name} key={member_id}>
-          {first_name}
-        </Button>
-      ))}
+      <h1>Select Member</h1>
+      <Form.Select onClick={handleClick}>
+        <option>Click here to select</option>
+        {members.map(({ member_id, first_name }) => (
+          <option value={member_id} key={member_id}>
+            {first_name}
+          </option>
+        ))}
+      </Form.Select>
     </>
   );
 };
