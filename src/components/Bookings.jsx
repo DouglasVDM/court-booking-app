@@ -7,7 +7,7 @@ const Bookings = ({ bookings, courts }) => {
       {bookings.map(
         ({
           booking_id,
-          court_id,
+          court_name,
           member_id,
           formatted_booked_at,
           day_name,
@@ -19,7 +19,7 @@ const Bookings = ({ bookings, courts }) => {
           <Card className="mt-4" key={booking_id} style={{ width: "18rem" }}>
             <Card.Img variant="top" src="holder.js/100px180" />
             <Card.Body>
-              <Card.Title>Court {court_id}</Card.Title>
+              <Card.Title>{court_name}</Card.Title>
               <ul>
                 <li>Booked by: {member_id}</li>
                 <li>Created at: {formatted_booked_at}</li>

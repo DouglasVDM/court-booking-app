@@ -7,7 +7,7 @@ const Courts = ({ courts, onCourtSelected }) => {
     );
     // selectedCourt;
 
-    console.log("selectedCourt", selectedCourt.court_id);
+    console.log("selectedCourt", selectedCourt.court_name);
     onCourtSelected(selectedCourt);
   };
 

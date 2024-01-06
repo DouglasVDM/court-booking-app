@@ -47,7 +47,7 @@ const BookingForm = ({
 
   const handleSubmit = async () => {
     const bookingFormData = {
-      court_id: selectedCourt ? selectedCourt.court_id : null,
+      court_name: selectedCourt ? selectedCourt.court_name : null,
       member_id: selectedMember ? selectedMember.member_id : null,
       booked_at: new Date().toISOString(),
       day_name: selectedDayOfWeek ? selectedDayOfWeek.day_name : null,
