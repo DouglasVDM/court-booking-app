@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import Button from "react-bootstrap/Button";
 
 // Components
@@ -61,13 +61,13 @@ const App = () => {
   );
 };
 
-App.propTypes = {
-  courts: PropTypes.array.isRequired,
-  daysOfWeek: PropTypes.array.isRequired,
-  startTimes: PropTypes.array.isRequired,
-  durations: PropTypes.array.isRequired,
-  bookingTypes: PropTypes.array.isRequired,
-  members: PropTypes.array.isRequired,
-};
+// App.propTypes = {
+//   courts: PropTypes.array.isRequired,
+//   daysOfWeek: PropTypes.array.isRequired,
+//   startTimes: PropTypes.array.isRequired,
+//   durations: PropTypes.array.isRequired,
+//   bookingTypes: PropTypes.array.isRequired,
+//   members: PropTypes.array.isRequired,
+// };
 
 export default App;
