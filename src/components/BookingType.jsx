@@ -1,10 +1,7 @@
 import Form from "react-bootstrap/Form";
+import PropTypes from "prop-types";
 
-const BookingType = ({
-  bookingTypes,
-  selectedBookingType,
-  onBookingTypeSelected,
-}) => {
+const BookingType = ({ bookingTypes, onBookingTypeSelected }) => {
   const handleClick = (event) => {
     `Clicked ${event.target.value}`;
     const selectedBookingType = bookingTypes.find(
@@ -29,6 +26,16 @@ const BookingType = ({
       </Form.Select>
     </>
   );
+};
+
+BookingType.propTypes = {
+  bookingTypes: PropTypes.arrayOf(
+    PropTypes.shape({
+      booking_type_id: PropTypes.number.isRequired,
+      booking_type_name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  onBookingTypeSelected: PropTypes.func.isRequired,
 };
 
 export default BookingType;

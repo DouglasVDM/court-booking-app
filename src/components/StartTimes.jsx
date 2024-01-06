@@ -1,4 +1,5 @@
 import Form from "react-bootstrap/Form";
+import PropTypes from "prop-types";
 
 const StartTimes = ({ startTimes, onStartTimeSelected }) => {
   const handleClick = (event) => {
@@ -24,5 +25,16 @@ const StartTimes = ({ startTimes, onStartTimeSelected }) => {
     </>
   );
 };
+
+StartTimes.propTypes = {
+  startTimes: PropTypes.arrayOf(
+    PropTypes.shape({
+      start_time_id: PropTypes.number.isRequired,
+      start_time: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  onStartTimeSelected: PropTypes.func.isRequired,
+};
+
 
 export default StartTimes;

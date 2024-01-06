@@ -1,7 +1,8 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import PropTypes from "prop-types";
 
-const Bookings = ({ bookings, courts }) => {
+const Bookings = ({ bookings }) => {
   return (
     <div className="m-4">
       {bookings.map(
@@ -15,7 +16,6 @@ const Bookings = ({ bookings, courts }) => {
           duration_hours,
           booking_type_name,
         }) => (
-            
           <Card className="mt-4" key={booking_id} style={{ width: "18rem" }}>
             <Card.Img variant="top" src="holder.js/100px180" />
             <Card.Body>
@@ -35,6 +35,21 @@ const Bookings = ({ bookings, courts }) => {
       )}
     </div>
   );
+};
+
+Bookings.propTypes = {
+  bookings: PropTypes.arrayOf(
+    PropTypes.shape({
+      booking_id: PropTypes.number.isRequired,
+      court_name: PropTypes.string.isRequired,
+      member_id: PropTypes.number.isRequired,
+      formatted_booked_at: PropTypes.string.isRequired,
+      day_name: PropTypes.string.isRequired,
+      formatted_start_time: PropTypes.string.isRequired,
+      duration_hours: PropTypes.number.isRequired,
+      booking_type_name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default Bookings;

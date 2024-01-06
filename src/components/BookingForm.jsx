@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
+import PropTypes from "prop-types";
 
 const apiEndpointPrefix = import.meta.env.VITE_API_ENDPOINT;
 
@@ -61,7 +62,12 @@ const BookingForm = ({
     try {
       const bookingResponse = await axios.post(
         `${apiEndpointPrefix}/bookings`,
-        bookingFormData
+        bookingFormData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
       console.log("Booking created:", bookingResponse.data);
     } catch (err) {
@@ -71,9 +77,17 @@ const BookingForm = ({
 
   return (
     <>
-      <Members members={members} onMemberSelected={handleMemberSelected} />
+      <Members
+        members={members}
+        selectedMember={selectedMember}
+        onMemberSelected={handleMemberSelected}
+      />
       <br />
-      <Courts courts={courts} onCourtSelected={handleCourtSelected} />
+      <Courts
+        courts={courts}
+        selectedCourt={selectedCourt}
+        onCourtSelected={handleCourtSelected}
+      />
       <br />
       <DaysOfWeek
         daysOfWeek={daysOfWeek}
@@ -96,15 +110,23 @@ const BookingForm = ({
       <BookingType
         bookingTypes={bookingTypes}
         selectedBookingType={selectedBookingType}
-        setBookingType={setSelectedBookingType}
         onBookingTypeSelected={handleBookingTypeSelected}
       />
       <br />
-        <Button variant="primary" onClick={handleSubmit}>
-          Submit
-        </Button>
+      <Button variant="primary" onClick={handleSubmit}>
+        Submit
+      </Button>
     </>
   );
+};
+
+BookingForm.propTypes = {
+  courts: PropTypes.array.isRequired,
+  daysOfWeek: PropTypes.array.isRequired,
+  startTimes: PropTypes.array.isRequired,
+  durations: PropTypes.array.isRequired,
+  bookingTypes: PropTypes.array.isRequired,
+  members: PropTypes.array.isRequired,
 };
 
 export default BookingForm;

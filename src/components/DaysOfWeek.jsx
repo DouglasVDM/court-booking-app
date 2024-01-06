@@ -1,6 +1,7 @@
 import Form from "react-bootstrap/Form";
+import PropTypes from "prop-types";
 
-const DaysOfWeek = ({ daysOfWeek, selectedDayOfWeek, onDayOfWeekSelected }) => {
+const DaysOfWeek = ({ daysOfWeek, onDayOfWeekSelected }) => {
   const handleClick = (event) => {
     const selectedDayOfWeek = daysOfWeek.find(
       (day) => day.day_name === event.target.value
@@ -23,6 +24,16 @@ const DaysOfWeek = ({ daysOfWeek, selectedDayOfWeek, onDayOfWeekSelected }) => {
       </Form.Select>
     </>
   );
+};
+
+DaysOfWeek.propTypes = {
+  daysOfWeek: PropTypes.arrayOf(
+    PropTypes.shape({
+      day_id: PropTypes.number.isRequired,
+      day_name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  onDayOfWeekSelected: PropTypes.func.isRequired,
 };
 
 export default DaysOfWeek;

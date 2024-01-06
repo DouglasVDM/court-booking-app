@@ -1,11 +1,11 @@
 import Form from "react-bootstrap/Form";
+import PropTypes from "prop-types";
 
 const Courts = ({ courts, onCourtSelected }) => {
   const handleClick = (event) => {
     const selectedCourt = courts.find(
       (court) => court.court_id === parseInt(event.target.value)
     );
-    // selectedCourt;
 
     console.log("selectedCourt", selectedCourt.court_name);
     onCourtSelected(selectedCourt);
@@ -24,6 +24,16 @@ const Courts = ({ courts, onCourtSelected }) => {
       </Form.Select>
     </>
   );
+};
+
+Courts.propTypes = {
+  courts: PropTypes.arrayOf(
+    PropTypes.shape({
+      court_id: PropTypes.number.isRequired,
+      court_name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  onCourtSelected: PropTypes.func.isRequired,
 };
 
 export default Courts;
