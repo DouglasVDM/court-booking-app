@@ -8,6 +8,8 @@ import DaysOfWeek from "./components/DaysOfWeek";
 import Durations from "./components/Durations";
 import StartTimes from "./components/StartTimes";
 import BookingType from "./components/BookingType";
+import Bookings from "./components/Bookings";
+
 
 // Custom Hooks for fetching data
 import useBookingTypes from "./customHooks/useBookingTypes";
@@ -17,7 +19,6 @@ import useDaysOfWeek from "./customHooks/useDaysOfWeek";
 import useBookings from "./customHooks/useBookings";
 import useCourts from "./customHooks/useCourts";
 import useMembers from "./customHooks/useMembers";
-
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [show, setShow] = useState(true);
@@ -40,8 +41,9 @@ const App = () => {
     <div  className="m-4">
       <h1>Court Booking App</h1>
       <hr />
+      <Bookings bookings={bookings} courts={courts}/>
       {show ? (
-      <Button onClick={handleClick} variant="primary" size="lg">
+      <Button className="m-4" onClick={handleClick} variant="primary" size="lg">
         Book a court
       </Button>
       ) : (
