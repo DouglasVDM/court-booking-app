@@ -1,13 +1,10 @@
 import { useState } from "react";
+// import PropTypes from "prop-types";
 import Button from "react-bootstrap/Button";
 
 // Components
-import Courts from "./components/Courts";
 import BookingForm from "./components/BookingForm";
-import DaysOfWeek from "./components/DaysOfWeek";
-import Durations from "./components/Durations";
-import StartTimes from "./components/StartTimes";
-import BookingType from "./components/BookingType";
+import Bookings from "./components/Bookings";
 
 // Custom Hooks for fetching data
 import useBookingTypes from "./customHooks/useBookingTypes";
@@ -24,29 +21,32 @@ const App = () => {
 
   const apiEndpointPrefix = import.meta.env.VITE_API_ENDPOINT;
 
-  const { bookingTypes, setBookingTypes } = useBookingTypes(apiEndpointPrefix);
-  const { durations, setDurations } = useDurations(apiEndpointPrefix);
-  const { startTimes, setStartTimes } = useStartTimes(apiEndpointPrefix);
-  const { daysOfWeek, setDaysOfWeek } = useDaysOfWeek(apiEndpointPrefix);
-  const { bookings, setBookings } = useBookings(apiEndpointPrefix);
-  const { courts, setCourts } = useCourts(apiEndpointPrefix);
-  const { members, setMembers } = useMembers(apiEndpointPrefix);
+  const { bookingTypes } = useBookingTypes(apiEndpointPrefix);
+  const { durations } = useDurations(apiEndpointPrefix);
+  const { startTimes } = useStartTimes(apiEndpointPrefix);
+  const { daysOfWeek } = useDaysOfWeek(apiEndpointPrefix);
+  const { bookings } = useBookings(apiEndpointPrefix);
+  const { courts } = useCourts(apiEndpointPrefix);
+  const { members } = useMembers(apiEndpointPrefix);
 
   const handleClick = () => {
     setShow(!show);
   };
 
   return (
-    <>
+    <div className="m-4">
       <h1>Court Booking App</h1>
-      <br />
-      <Button onClick={handleClick} variant="primary" size="lg">
-        Book a court
-      </Button>
-      <br />
-      <br />
+      <hr />
+      <Bookings bookings={bookings} courts={courts} />
       {show ? (
-        ""
+        <Button
+          className="m-4"
+          onClick={handleClick}
+          variant="primary"
+          size="lg"
+        >
+          Book a court
+        </Button>
       ) : (
         <BookingForm
           courts={courts}
@@ -57,24 +57,17 @@ const App = () => {
           members={members}
         />
       )}
-      {/* <Courts courts={courts} setCourts={setCourts} />
-      <br />
-      <br />
-      <DaysOfWeek daysOfWeek={daysOfWeek} setDaysOfWeek={setDaysOfWeek} />
-      <br />
-      <br />
-      <StartTimes startTimes={startTimes} setStartTimes={setStartTimes} />
-      <br />
-      <br />
-      <Durations durations={durations} setDurations={setDurations} />
-      <br />
-      <br />
-      <BookingType */}
-      {/* bookingTypes={bookingTypes}
-        setBookingTypes={setBookingTypes}
-      /> */}
-    </>
+    </div>
   );
 };
+
+// App.propTypes = {
+//   courts: PropTypes.array.isRequired,
+//   daysOfWeek: PropTypes.array.isRequired,
+//   startTimes: PropTypes.array.isRequired,
+//   durations: PropTypes.array.isRequired,
+//   bookingTypes: PropTypes.array.isRequired,
+//   members: PropTypes.array.isRequired,
+// };
 
 export default App;
