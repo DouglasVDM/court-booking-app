@@ -1,6 +1,8 @@
 import { useState } from "react";
 // import PropTypes from "prop-types";
 import Button from "react-bootstrap/Button";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Route, Routes } from "react-router-dom";
 
 // Components
 import BookingForm from "./components/BookingForm";
@@ -14,6 +16,8 @@ import useDaysOfWeek from "./customHooks/useDaysOfWeek";
 import useBookings from "./customHooks/useBookings";
 import useCourts from "./customHooks/useCourts";
 import useMembers from "./customHooks/useMembers";
+import LoginButton from "./components/buttons/LoginButton";
+import LogoutButton from "./components/buttons/LogoutButton";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -37,6 +41,8 @@ const App = () => {
     <div className="m-4">
       <h1>Court Booking App</h1>
       <hr />
+      <LoginButton/>
+      <LogoutButton/>
       <Bookings bookings={bookings} courts={courts} />
       {show ? (
         <Button
