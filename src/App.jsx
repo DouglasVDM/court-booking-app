@@ -1,69 +1,54 @@
-import { useState } from "react";
 // import PropTypes from "prop-types";
-import Button from "react-bootstrap/Button";
-import { useAuth0 } from "@auth0/auth0-react";
-import { Route, Routes } from "react-router-dom";
-
-// Components
-import BookingForm from "./components/BookingForm";
-import Bookings from "./components/Bookings";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // Custom Hooks for fetching data
 import useBookingTypes from "./customHooks/useBookingTypes";
 import useDurations from "./customHooks/useDurations";
 import useStartTimes from "./customHooks/useStartTimes";
 import useDaysOfWeek from "./customHooks/useDaysOfWeek";
-import useBookings from "./customHooks/useBookings";
 import useCourts from "./customHooks/useCourts";
 import useMembers from "./customHooks/useMembers";
-import LoginButton from "./components/buttons/LoginButton";
-import LogoutButton from "./components/buttons/LogoutButton";
+import useBookings from "./customHooks/useBookings";
+
+const apiEndpointPrefix = import.meta.env.VITE_API_ENDPOINT;
+
+// Components
+import Bookings from "./components/Bookings";
+import HomePage from "./components/pages/HomePage";
+import BookingForm from "./components/BookingForm";
+import LoginForm from "./components/LoginForm";
+import CallbackPage from "./components/pages/CallbackPage";
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
-  const [show, setShow] = useState(true);
-
-  const apiEndpointPrefix = import.meta.env.VITE_API_ENDPOINT;
-
+  const { bookings } = useBookings(apiEndpointPrefix);
   const { bookingTypes } = useBookingTypes(apiEndpointPrefix);
   const { durations } = useDurations(apiEndpointPrefix);
   const { startTimes } = useStartTimes(apiEndpointPrefix);
   const { daysOfWeek } = useDaysOfWeek(apiEndpointPrefix);
-  const { bookings } = useBookings(apiEndpointPrefix);
+
   const { courts } = useCourts(apiEndpointPrefix);
   const { members } = useMembers(apiEndpointPrefix);
 
-  const handleClick = () => {
-    setShow(!show);
-  };
-
   return (
-    <div className="m-4">
-      <h1>Court Booking App</h1>
-      <hr />
-      <LoginButton/>
-      <LogoutButton/>
-      <Bookings bookings={bookings} courts={courts} />
-      {show ? (
-        <Button
-          className="m-4"
-          onClick={handleClick}
-          variant="primary"
-          size="lg"
-        >
-          Book a court
-        </Button>
-      ) : (
-        <BookingForm
-          courts={courts}
-          daysOfWeek={daysOfWeek}
-          startTimes={startTimes}
-          durations={durations}
-          bookingTypes={bookingTypes}
-          members={members}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/callback" element={<CallbackPage />} />
+        <Route path="/bookings" element={<Bookings bookings={bookings} />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route
+          path="/booking-form"
+          element={
+            <BookingForm
+              courts={courts}
+              daysOfWeek={daysOfWeek}
+              startTimes={startTimes}
+              durations={durations}
+              bookingTypes={bookingTypes}
+              members={members}
+            />
+          }
         />
-      )}
-    </div>
+      </Routes>
   );
 };
 

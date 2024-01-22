@@ -1,10 +1,15 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const Bookings = ({ bookings }) => {
   return (
     <div className="m-4">
+      <h1>All Bookings</h1>
+      <Link to="/booking-Form">Book a court</Link>
+      <br />
+      <Link to="/">Home</Link>
       {bookings.map(
         ({
           booking_id,
@@ -16,7 +21,7 @@ const Bookings = ({ bookings }) => {
           duration_hours,
           booking_type_name,
         }) => (
-          <Card className="mt-4" key={booking_id} style={{ width: "18rem" }}>
+          <Card className="m-4" key={booking_id} style={{ width: "18rem" }}>
             <Card.Img variant="top" src="holder.js/100px180" />
             <Card.Body>
               <Card.Title>{court_name}</Card.Title>
