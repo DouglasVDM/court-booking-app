@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
-import PropTypes from "prop-types";
 
 const apiEndpointPrefix = import.meta.env.VITE_API_ENDPOINT;
 
@@ -11,6 +10,7 @@ import DaysOfWeek from "./DaysOfWeek";
 import StartTimes from "./StartTimes";
 import Durations from "./Durations";
 import Members from "./Members";
+import PageLayout from "./PageLayout";
 
 const BookingForm = ({
   courts,
@@ -76,57 +76,61 @@ const BookingForm = ({
   };
 
   return (
-    <>
-      <Members
-        members={members}
-        selectedMember={selectedMember}
-        onMemberSelected={handleMemberSelected}
-      />
-      <br />
-      <Courts
-        courts={courts}
-        selectedCourt={selectedCourt}
-        onCourtSelected={handleCourtSelected}
-      />
-      <br />
-      <DaysOfWeek
-        daysOfWeek={daysOfWeek}
-        selectedDayOfWeek={selectedDayOfWeek}
-        onDayOfWeekSelected={handleDayOfWeekSelected}
-      />
-      <br />
-      <StartTimes
-        startTimes={startTimes}
-        selectedStartTime={selectedStartTime}
-        onStartTimeSelected={handleStartTimeSelected}
-      />
-      <br />
-      <Durations
-        durations={durations}
-        selectedDuration={selectedDuration}
-        onDurationSelected={handleDurationSelected}
-      />
-      <br />
-      <BookingType
-        bookingTypes={bookingTypes}
-        selectedBookingType={selectedBookingType}
-        onBookingTypeSelected={handleBookingTypeSelected}
-      />
-      <br />
-      <Button variant="primary" onClick={handleSubmit}>
-        Submit
-      </Button>
-    </>
+    <PageLayout>
+      <div className="m-4">
+        <h1>Book a court</h1>
+        <hr />
+        <Members
+          members={members}
+          selectedMember={selectedMember}
+          onMemberSelected={handleMemberSelected}
+        />
+        <br />
+        <Courts
+          courts={courts}
+          selectedCourt={selectedCourt}
+          onCourtSelected={handleCourtSelected}
+        />
+        <br />
+        <DaysOfWeek
+          daysOfWeek={daysOfWeek}
+          selectedDayOfWeek={selectedDayOfWeek}
+          onDayOfWeekSelected={handleDayOfWeekSelected}
+        />
+        <br />
+        <StartTimes
+          startTimes={startTimes}
+          selectedStartTime={selectedStartTime}
+          onStartTimeSelected={handleStartTimeSelected}
+        />
+        <br />
+        <Durations
+          durations={durations}
+          selectedDuration={selectedDuration}
+          onDurationSelected={handleDurationSelected}
+        />
+        <br />
+        <BookingType
+          bookingTypes={bookingTypes}
+          selectedBookingType={selectedBookingType}
+          onBookingTypeSelected={handleBookingTypeSelected}
+        />
+        <br />
+        <Button variant="primary" onClick={handleSubmit}>
+          Submit
+        </Button>
+      </div>
+    </PageLayout>
   );
 };
 
-BookingForm.propTypes = {
-  courts: PropTypes.array.isRequired,
-  daysOfWeek: PropTypes.array.isRequired,
-  startTimes: PropTypes.array.isRequired,
-  durations: PropTypes.array.isRequired,
-  bookingTypes: PropTypes.array.isRequired,
-  members: PropTypes.array.isRequired,
-};
+// BookingForm.propTypes = {
+//   courts: PropTypes.array.isRequired,
+//   daysOfWeek: PropTypes.array.isRequired,
+//   startTimes: PropTypes.array.isRequired,
+//   durations: PropTypes.array.isRequired,
+//   bookingTypes: PropTypes.array.isRequired,
+//   members: PropTypes.array.isRequired,
+// };
 
 export default BookingForm;

@@ -1,7 +1,7 @@
 import { Auth0Provider } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 
-export const Auth0ProviderWithNavigate = ({ children }) => {
+const Auth0ProviderWithNavigate = ({ children }) => {
   const navigate = useNavigate();
 
   const domain = import.meta.env.VITE_AUTH0_DOMAIN;
@@ -29,3 +29,5 @@ export const Auth0ProviderWithNavigate = ({ children }) => {
     </Auth0Provider>
   );
 };
+
+export default Auth0ProviderWithNavigate;

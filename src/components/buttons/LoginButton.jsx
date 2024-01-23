@@ -7,12 +7,19 @@ const LoginButton = () => {
   const handleLogin = async () => {
     await loginWithRedirect({
       appState: {
-        returnTo: "/bookings",
+        returnTo: "/profile",
+      },
+      authorizationParams: {
+        prompt: "login",
       },
     });
   };
 
-  return <Button onClick={handleLogin}>Log In</Button>;
+  return (
+    <Button className="" onClick={handleLogin}>
+      Log In
+    </Button>
+  );
 };
 
 export default LoginButton;
