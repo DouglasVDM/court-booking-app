@@ -1,35 +1,36 @@
 import React, { useEffect, useState } from "react";
 import  PageLayout  from "../components/PageLayout";
-// import { getProtectedResource } from "../services/message.service";
+import { getProtectedResource } from "../services/message-service";
+
 
 const ProtectedPage = () => {
-//   const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("");
 
-//   useEffect(() => {
-//     let isMounted = true;
+  useEffect(() => {
+    let isMounted = true;
 
-//     const getMessage = async () => {
-//       const { data, error } = await getProtectedResource();
+    const getMessage = async () => {
+      const { data, error } = await getProtectedResource();
 
-//       if (!isMounted) {
-//         return;
-//       }
+      if (!isMounted) {
+        return;
+      }
 
-//       if (data) {
-//         setMessage(JSON.stringify(data, null, 2));
-//       }
+      if (data) {
+        setMessage(JSON.stringify(data, null, 2));
+      }
 
-//       if (error) {
-//         setMessage(JSON.stringify(error, null, 2));
-//       }
-//     };
+      if (error) {
+        setMessage(JSON.stringify(error, null, 2));
+      }
+    };
 
-//     getMessage();
+    getMessage();
 
-//     return () => {
-//       isMounted = false;
-//     };
-//   }, []);
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
     <PageLayout>
