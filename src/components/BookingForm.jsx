@@ -79,7 +79,6 @@ const BookingForm = ({
     <PageLayout>
       <div className="m-4">
         <h1>Book a court</h1>
-        <hr />
         <Members
           members={members}
           selectedMember={selectedMember}
