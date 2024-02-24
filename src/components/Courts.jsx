@@ -12,17 +12,14 @@ const Courts = ({ courts, onCourtSelected }) => {
   };
 
   return (
-    <>
-      <h1>Select Court</h1>
-      <Form.Select size="lg" onClick={handleClick}>
-        ,<option>Click here to select</option>
-        {courts.map(({ court_id, court_name }) => (
-          <option value={court_id} key={court_id}>
-            {court_name}
-          </option>
-        ))}
-      </Form.Select>
-    </>
+    <Form.Select aria-label="Select a court" size="lg" onClick={handleClick}>
+      <option>Select court</option>
+      {courts.map(({ court_id, court_name }) => (
+        <option value={court_id} key={court_id}>
+          {court_name}
+        </option>
+      ))}
+    </Form.Select>
   );
 };
 

@@ -14,17 +14,18 @@ const BookingType = ({ bookingTypes, onBookingTypeSelected }) => {
   };
 
   return (
-    <>
-      <h1>Select booking type</h1>
-      <Form.Select onClick={handleClick}>
-        <option>Click here to select</option>
-        {bookingTypes.map(({ booking_type_id, booking_type_name }) => (
-          <option value={booking_type_name} key={booking_type_id}>
-            {booking_type_name}
-          </option>
-        ))}
-      </Form.Select>
-    </>
+    <Form.Select
+      aria-label="Select booking type"
+      size="lg"
+      onClick={handleClick}
+    >
+      <option>Select booking type</option>
+      {bookingTypes.map(({ booking_type_id, booking_type_name }) => (
+        <option value={booking_type_name} key={booking_type_id}>
+          {booking_type_name}
+        </option>
+      ))}
+    </Form.Select>
   );
 };
 
