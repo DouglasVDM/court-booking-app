@@ -54,7 +54,7 @@ const App = () => {
         element={<AuthenticationGuard component={ProfilePage} />}
       />
       <Route path="/public" element={<PublicPage />} />
-      <Route path="/protected" element={ProtectedPage} />
+      <Route path="/protected" element={<ProtectedPage/>} />
       <Route
         path="/admin"
         element={<AuthenticationGuard component={AdminPage} />}
