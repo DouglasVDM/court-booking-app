@@ -1,6 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import PageLayout from "../components/PageLayout";
 import { useEffect, useState } from "react";
+import { getAdminResource } from "../services/message-service";
 
 const AdminPage = () => {
   const [message, setMessage] = useState("");
