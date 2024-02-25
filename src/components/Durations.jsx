@@ -12,17 +12,18 @@ const Durations = ({ durations, onDurationSelected }) => {
   };
 
   return (
-    <>
-      <h1>Select duration of session</h1>
-      <Form.Select onClick={handleClick}>
-        <option>Click here to select</option>
-        {durations.map(({ duration_id, duration_hours }) => (
-          <option value={duration_hours} key={duration_id}>
-            {duration_hours}h
-          </option>
-        ))}
-      </Form.Select>
-    </>
+    <Form.Select
+      aria-label="Select duration in hours"
+      size="lg"
+      onClick={handleClick}
+    >
+      <option>Select duration</option>
+      {durations.map(({ duration_id, duration_hours }) => (
+        <option value={duration_hours} key={duration_id}>
+          {duration_hours}h
+        </option>
+      ))}
+    </Form.Select>
   );
 };
 

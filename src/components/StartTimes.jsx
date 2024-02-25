@@ -12,17 +12,14 @@ const StartTimes = ({ startTimes, onStartTimeSelected }) => {
   };
 
   return (
-    <>
-      <h1>Select start time</h1>
-      <Form.Select onClick={handleClick}>
-        <option>Click here to select</option>
-        {startTimes.map(({ start_time_id, start_time }) => (
-          <option value={start_time} key={start_time_id}>
-            {start_time}
-          </option>
-        ))}
-      </Form.Select>
-    </>
+    <Form.Select aria-label="Select start time" size="lg" onClick={handleClick}>
+      <option>Select start time</option>
+      {startTimes.map(({ start_time_id, start_time }) => (
+        <option value={start_time} key={start_time_id}>
+          {start_time}
+        </option>
+      ))}
+    </Form.Select>
   );
 };
 
@@ -35,6 +32,5 @@ StartTimes.propTypes = {
   ).isRequired,
   onStartTimeSelected: PropTypes.func.isRequired,
 };
-
 
 export default StartTimes;

@@ -1,27 +1,22 @@
 import Form from "react-bootstrap/Form";
 import PropTypes from "prop-types";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Members = ({ members, onMemberSelected }) => {
-  const handleClick = (event) => {
-    const selectedMember = members.find(
-      (member) => member.member_id === parseInt(event.target.value)
-    );
-
-    console.log("selectedMember", selectedMember.member_id);
-    onMemberSelected(selectedMember);
-  };
+  const { user } = useAuth0();
 
   return (
     <>
-      <h1>Select Member</h1>
-      <Form.Select onClick={handleClick}>
-        <option>Click here to select</option>
-        {members.map(({ member_id, first_name }) => (
-          <option value={member_id} key={member_id}>
-            {first_name}
-          </option>
-        ))}
-      </Form.Select>
+      <Form.Group md="4" controlId="validationCustom01">
+        <Form.Label>Member</Form.Label>
+        <Form.Control
+          required
+          type="text"
+          placeholder={user.name}
+          defaultValue={user.name}
+        />
+        <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+      </Form.Group>
     </>
   );
 };
