@@ -8,7 +8,6 @@ import useDurations from "./customHooks/useDurations";
 import useStartTimes from "./customHooks/useStartTimes";
 import useDaysOfWeek from "./customHooks/useDaysOfWeek";
 import useCourts from "./customHooks/useCourts";
-import useMembers from "./customHooks/useMembers";
 import useBookings from "./customHooks/useBookings";
 
 const apiEndpointPrefix = import.meta.env.VITE_API_ENDPOINT;
@@ -44,7 +43,6 @@ const App = () => {
   const { startTimes } = useStartTimes(apiEndpointPrefix);
   const { daysOfWeek } = useDaysOfWeek(apiEndpointPrefix);
   const { courts } = useCourts(apiEndpointPrefix);
-  const { members } = useMembers(apiEndpointPrefix);
 
   return (
     <Routes>
@@ -72,7 +70,6 @@ const App = () => {
             startTimes={startTimes}
             durations={durations}
             bookingTypes={bookingTypes}
-            members={members}
           />
         }
       />
