@@ -12,7 +12,7 @@ const Bookings = ({ bookings }) => {
           ({
             booking_id,
             court_name,
-            member_id,
+            member_name,
             formatted_booked_at,
             day_name,
             formatted_start_time,
@@ -24,7 +24,7 @@ const Bookings = ({ bookings }) => {
               <Card.Body>
                 <Card.Title>{court_name}</Card.Title>
                 <ul>
-                  <li>Booked by: {member_id}</li>
+                  <li>Booked by: {member_name}</li>
                   <li>Created at: {formatted_booked_at}</li>
                   <li>Booking day: {day_name}</li>
                   <li>Starting at: {formatted_start_time}</li>
@@ -46,7 +46,7 @@ Bookings.propTypes = {
     PropTypes.shape({
       booking_id: PropTypes.number.isRequired,
       court_name: PropTypes.string.isRequired,
-      member_id: PropTypes.number.isRequired,
+      member_name: PropTypes.string.isRequired,
       formatted_booked_at: PropTypes.string.isRequired,
       day_name: PropTypes.string.isRequired,
       formatted_start_time: PropTypes.string.isRequired,
