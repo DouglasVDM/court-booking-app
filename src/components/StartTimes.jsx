@@ -7,7 +7,6 @@ const StartTimes = ({ startTimes, onStartTimeSelected }) => {
       (time) => time.start_time === event.target.value
     );
 
-    console.log("selectedStartTime", selectedStartTime.start_time);
     onStartTimeSelected(selectedStartTime);
   };
 

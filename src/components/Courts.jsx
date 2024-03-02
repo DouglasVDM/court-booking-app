@@ -7,7 +7,6 @@ const Courts = ({ courts, onCourtSelected }) => {
       (court) => court.court_id === parseInt(event.target.value)
     );
 
-    console.log("selectedCourt", selectedCourt.court_name);
     onCourtSelected(selectedCourt);
   };
 

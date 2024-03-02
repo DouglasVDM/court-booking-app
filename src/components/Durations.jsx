@@ -7,7 +7,6 @@ const Durations = ({ durations, onDurationSelected }) => {
       (duration) => duration.duration_hours === parseInt(event.target.value)
     );
 
-    console.log("selectedDuration:", `${selectedDuration.duration_hours}h`);
     onDurationSelected(selectedDuration);
   };
 

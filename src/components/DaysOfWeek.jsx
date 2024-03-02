@@ -7,7 +7,6 @@ const DaysOfWeek = ({ daysOfWeek, onDayOfWeekSelected }) => {
       (day) => day.day_name === event.target.value
     );
 
-    console.log("selectedDayOfWeek", selectedDayOfWeek.day_name);
     onDayOfWeekSelected(selectedDayOfWeek);
   };
 

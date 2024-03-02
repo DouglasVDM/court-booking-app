@@ -7,7 +7,6 @@ const BookingType = ({ bookingTypes, onBookingTypeSelected }) => {
     const selectedBookingType = bookingTypes.find(
       (type) => type.booking_type_name === event.target.value
     );
-    console.log("selectedBookingType:", selectedBookingType.booking_type_name);
 
     // Call the callback function to pass the selected booking type
     onBookingTypeSelected(selectedBookingType);
