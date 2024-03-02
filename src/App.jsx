@@ -28,6 +28,12 @@ import PublicPage from "./pages/PublicPage";
 
 const App = () => {
   const { isLoading } = useAuth0();
+  const { bookings } = useBookings(apiEndpointPrefix);
+  const { bookingTypes } = useBookingTypes(apiEndpointPrefix);
+  const { durations } = useDurations(apiEndpointPrefix);
+  const { startTimes } = useStartTimes(apiEndpointPrefix);
+  const { daysOfWeek } = useDaysOfWeek(apiEndpointPrefix);
+  const { courts } = useCourts(apiEndpointPrefix);
 
   if (isLoading) {
     return (
@@ -37,12 +43,6 @@ const App = () => {
     );
   }
 
-  const { bookings } = useBookings(apiEndpointPrefix);
-  const { bookingTypes } = useBookingTypes(apiEndpointPrefix);
-  const { durations } = useDurations(apiEndpointPrefix);
-  const { startTimes } = useStartTimes(apiEndpointPrefix);
-  const { daysOfWeek } = useDaysOfWeek(apiEndpointPrefix);
-  const { courts } = useCourts(apiEndpointPrefix);
 
   return (
     <Routes>
