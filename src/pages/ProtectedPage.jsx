@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import  PageLayout  from "../components/PageLayout";
 import { getProtectedResource } from "../services/message-service";
+import CodeSnippet from "../components/CodeSnippet";
 
 
 const ProtectedPage = () => {
@@ -49,6 +50,7 @@ const ProtectedPage = () => {
             </span>
           </p>
         </div>
+        <CodeSnippet title="Protected Message" code={message} />
       </div>
     </PageLayout>
   );
