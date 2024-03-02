@@ -9,7 +9,6 @@ const useBookings = (apiEndpointPrefix) => {
       try {
         const bookingsResponse = await axios.get(`${apiEndpointPrefix}/bookings`);
         setBookings(bookingsResponse.data);
-        console.log("bookingsResponse", bookingsResponse.data);
       } catch (err) {
         console.error("Error fetching bookings:", err.message);
       }
