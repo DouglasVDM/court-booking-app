@@ -22,7 +22,6 @@ const BookingForm = ({
   members,
 }) => {
   const { user } = useAuth0();
-
   const [selectedCourt, setSelectedCourt] = useState(null);
   const [selectedDayOfWeek, setSelectedDayOfWeek] = useState(null);
   const [selectedStartTime, setSelectedStartTime] = useState(null);
@@ -125,14 +124,5 @@ const BookingForm = ({
     </PageLayout>
   );
 };
-
-// BookingForm.propTypes = {
-//   courts: PropTypes.array.isRequired,
-//   daysOfWeek: PropTypes.array.isRequired,
-//   startTimes: PropTypes.array.isRequired,
-//   durations: PropTypes.array.isRequired,
-//   bookingTypes: PropTypes.array.isRequired,
-//   members: PropTypes.array.isRequired,
-// };
 
 export default BookingForm;
