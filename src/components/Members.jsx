@@ -1,8 +1,7 @@
 import Form from "react-bootstrap/Form";
-import PropTypes from "prop-types";
 import { useAuth0 } from "@auth0/auth0-react";
 
-const Members = ({ members, onMemberSelected }) => {
+const Members = () => {
   const { user } = useAuth0();
 
   return (
@@ -19,16 +18,6 @@ const Members = ({ members, onMemberSelected }) => {
       </Form.Group>
     </>
   );
-};
-
-Members.propTypes = {
-  members: PropTypes.arrayOf(
-    PropTypes.shape({
-      member_id: PropTypes.number.isRequired,
-      first_name: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  onMemberSelected: PropTypes.func.isRequired,
 };
 
 export default Members;
