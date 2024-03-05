@@ -2,16 +2,21 @@ import Form from "react-bootstrap/Form";
 import PropTypes from "prop-types";
 
 const StartTimes = ({ startTimes, onStartTimeSelected }) => {
-  const handleClick = (event) => {
-    const selectedStartTime = startTimes.find(
+  const handleChange = (event) => {
+    const startTime = startTimes.find(
       (time) => time.start_time === event.target.value
     );
 
-    onStartTimeSelected(selectedStartTime);
+    console.log("Startimes line 11", event.target.value);
+    onStartTimeSelected(startTime);
   };
-
+``
   return (
-    <Form.Select aria-label="Select start time" size="lg" onClick={handleClick}>
+    <Form.Select
+      aria-label="Select start time"
+      size="lg"
+      onClick={handleChange}
+    >
       <option>Select start time</option>
       {startTimes.map(({ start_time_id, start_time }) => (
         <option value={start_time} key={start_time_id}>
