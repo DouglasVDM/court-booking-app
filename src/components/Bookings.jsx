@@ -20,18 +20,16 @@ const Bookings = ({ bookings }) => {
             booking_type_name,
           }) => (
             <Card className="m-4" key={booking_id} style={{ width: "18rem" }}>
-              <Card.Img variant="top" src="holder.js/100px180" />
               <Card.Body>
                 <Card.Title>{court_name}</Card.Title>
                 <ul>
-                  <li>Booked by: {member_name}</li>
-                  <li>Created at: {formatted_booked_at}</li>
-                  <li>Booking day: {day_name}</li>
+                  <li>Member: {member_name}</li>
+                  <li>Will be playing: {booking_type_name}</li>
+                  <li>On: {day_name}</li>
                   <li>Starting at: {formatted_start_time}</li>
-                  <li>Duration: {duration_hours} hour/s</li>
-                  <li>Match type: {booking_type_name}</li>
+                  <li>For: {duration_hours} hour/s</li>
+                  <li>Booking created at: {formatted_booked_at}</li>
                 </ul>
-                <Button variant="primary">Go somewhere</Button>
               </Card.Body>
             </Card>
           )
