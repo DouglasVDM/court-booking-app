@@ -7,10 +7,9 @@ const StartTimes = ({ startTimes, onStartTimeSelected }) => {
       (time) => time.start_time === event.target.value
     );
 
-    console.log("Startimes line 11", event.target.value);
     onStartTimeSelected(startTime);
   };
-``
+  ``;
   return (
     <Form.Select
       aria-label="Select start time"
