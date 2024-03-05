@@ -72,7 +72,13 @@ const BookingForm = ({
         }
       );
       console.log("Booking created:", bookingResponse.data);
-      window.location.reload();
+      setSelectedCourt(null);
+      setSelectedDayOfWeek(null);
+      setSelectedStartTime(null);
+      setSelectedDuration(null);
+      setSelectedBookingType(null);
+      window.alert("Your booking has been created");
+      window.location.assign("/bookings");
     } catch (err) {
       console.error("Error creating booking", err.message);
     }
