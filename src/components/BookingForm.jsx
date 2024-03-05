@@ -72,6 +72,7 @@ const BookingForm = ({
         }
       );
       console.log("Booking created:", bookingResponse.data);
+      window.location.reload();
     } catch (err) {
       console.error("Error creating booking", err.message);
     }
