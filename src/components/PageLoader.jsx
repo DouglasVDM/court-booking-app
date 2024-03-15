@@ -1,10 +1,14 @@
-const PageLoader = () => {
-  const loadingImg = "https://cdn.auth0.com/blog/hello-auth0/loader.svg";
+import Spinner from "react-bootstrap/Spinner";
 
+const PageLoader = () => {
   return (
-    <div className="loader">
-      <img src={loadingImg} alt="Loading..." />
-      <h1>Loading...</h1>
+    <div className="d-flex justify-content-center align-items-center vh-100">
+      <Spinner
+        animation="border"
+        variant="primary"
+        style={{ width: "10rem", height: "10rem" }}
+      />{" "}
+      <span className="visually-hidden">Loading...</span>
     </div>
   );
 };
