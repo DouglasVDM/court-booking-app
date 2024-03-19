@@ -4,8 +4,8 @@ import PageLayout from "../components/PageLayout";
 
 const HomePage = () => (
   <PageLayout>
-    <HeroBanner />
     <Auth0Features />
+    <HeroBanner />
   </PageLayout>
 );
 
